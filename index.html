@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a09" />
+<title>Kennedy · heterarquía y gobernanza policéntrica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side">
+    <div class="logo"><b>Kennedy</b><span>heterarquía · gobernanza policéntrica</span></div>
+    <nav class="toc" id="toc"></nav>
+    <div class="keys"><kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>G</kbd> guion · <kbd>T</kbd> cronómetro</div>
+  </aside>
+  <main class="main">
+    <header class="head">
+      <button class="menu" id="menu" aria-label="Índice">☰</button>
+      <span class="chip" id="chip"></span><span class="bt" id="bt"></span><span class="sp"></span>
+      <button class="timer" id="timer" title="Cronómetro (T)">00:00</button>
+      <span class="tc" id="tc"></span>
+    </header>
+    <section class="body">
+      <div class="stagecard"><div class="stage" id="stage"></div></div>
+      <div class="info" id="info"></div>
+    </section>
+    <footer class="foot">
+      <div class="nav"><button id="prev">← Anterior</button><button id="next" class="pri">Siguiente →</button></div>
+      <div class="scrub" id="scrub"></div>
+      <span class="tc" id="count"></span>
+    </footer>
+  </main>
+</div>
+<script src="./slides.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
