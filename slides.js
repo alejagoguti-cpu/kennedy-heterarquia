@@ -1,7 +1,7 @@
 (function(){
 const C={a:'#e0603f',b:'#4fb38f',c:'#5b9be0',h:'#f2b632',l:'#2a2924',p:'#1a1a17',v:'#b48ae0'};
 const svg=(b,vb='0 0 800 500')=>`<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><defs>
-<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8d887d"/></marker></defs>${b}</svg>`;
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8d887d"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4fb38f"/></marker><marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0603f"/></marker></defs>${b}</svg>`;
 const wrap=(t,n)=>{const w=t.split(' ');const L=[];let c='';w.forEach(x=>{if((c+' '+x).trim().length>n){L.push(c);c=x}else c=(c+' '+x).trim()});if(c)L.push(c);return L};
 const txt=(x,y,t,{n=18,s=13,f='',w=500,anchor='middle',lh=1.25}={})=>{const L=wrap(t,n);const y0=y-(L.length-1)*s*lh/2;
  return `<text x="${x}" y="${y0}" text-anchor="${anchor}" font-size="${s}" font-weight="${w}" ${f?`fill="${f}"`:''} dominant-baseline="middle">${L.map((l,k)=>`<tspan x="${x}" dy="${k?s*lh:0}">${l}</tspan>`).join('')}</text>`};
@@ -99,19 +99,28 @@ stage:()=>{const st=[['1','Agenda','¿Quién identifica el problema y logra que 
  return svg(o)}});
 
 SL.push({part:'Dinámico-causal',time:'8:15–10:45',title:'Por qué se sostiene o cambia',
-h1:'Bucles que sostienen o desgastan la coordinación',
-lead:'Borrador del modelo dinámico-causal: refuerzos y balances por validar con el equipo.',
-src:'⚠ El guion de esta sección (8:15–10:45) no estaba completo en el texto recibido: el diagrama es un borrador a validar.',
-say:['[Falta el texto de esta sección: pega aquí el guion de 8:15–10:45. El diagrama es un borrador.]','Idea sugerida: más información compartida → más coordinación → más acuerdos cumplidos → más confianza → más participación → más información (bucle de refuerzo). La concentración informal de influencia reduce la participación y frena el ciclo. Sin recursos garantizados (financiación, infraestructura) los acuerdos quedan en el papel.'],
-stage:()=>{const N={i:[400,80,'Información compartida',C.c],c:[640,190,'Coordinación entre centros',C.b],a:[560,380,'Acuerdos cumplidos',C.h],t:[240,380,'Confianza',C.a],p:[160,190,'Participación efectiva',C.v],x:[400,270,'Concentración informal de influencia','#8d887d'],r:[400,450,'Recursos garantizados',C.h]};
- let o='';const e=(a,b,s,col='#8d887d',d='')=>{const A=N[a],B=N[b];const dx=B[0]-A[0],dy=B[1]-A[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L];
-  const k=Math.min(60/Math.max(Math.abs(u[0]),.01),30/Math.max(Math.abs(u[1]),.01));
-  o+=arr(A[0]+u[0]*k,A[1]+u[1]*k,B[0]-u[0]*k,B[1]-u[1]*k,col,d);o+=`<text class="mono" x="${(A[0]+B[0])/2+u[1]*14}" y="${(A[1]+B[1])/2-u[0]*14}" font-size="15" font-weight="700" fill="${s==='+'?C.b:C.a}" text-anchor="middle">${s}</text>`};
- e('i','c','+');e('c','a','+');e('a','t','+');e('t','p','+');e('p','i','+');
- e('x','p','−',C.a,'4 4');e('r','a','+',C.h);
- Object.values(N).forEach(n=>{o+=`<rect x="${n[0]-62}" y="${n[1]-26}" width="124" height="52" rx="10" fill="${C.p}" stroke="${n[3]}" stroke-width="1.5"/>`+txt(n[0],n[1],n[2],{s:11.5,n:16,w:600})});
- o+=`<text class="mono" x="400" y="190" font-size="30" font-weight="700" fill="${C.b}" text-anchor="middle" opacity=".35">R1</text>`;
- o+=`<text class="mono" x="20" y="26" font-size="11" fill="#8d887d">BORRADOR · POR VALIDAR · + refuerza  − debilita</text>`;
+h1:'Flujos que sostienen o desgastan la coordinación',
+lead:'Borrador: cómo circulan materiales, dinero e información en la recuperación de residuos, y qué retroalimentaciones sostienen o rompen la coordinación.',
+src:'⚠ Borrador por validar: el guion de 8:15–10:45 no llegó; los flujos salen del resto del guion. Sin cantidades reales (kg, $) hasta tener datos.',
+say:['[Falta el texto de esta sección: pega aquí el guion de 8:15–10:45.]','Lectura sugerida del diagrama: los residuos fluyen de quien los genera a quien los compra (flechas grises). El dinero, los acuerdos y las competencias legales vuelven como retroalimentación (verde discontinuo) y sostienen la mesa de coordinación propuesta. Sin financiación e infraestructura garantizadas los acuerdos quedan en el papel, y quien controla precio o ruta puede concentrar influencia sin autoridad formal (rojo).'],
+stage:()=>{const G='#4fb38f',R='#e0603f';
+ const bx=(x,y,t,col,dash)=>`<rect x="${x-78}" y="${y-28}" width="156" height="56" rx="10" fill="${C.p}" stroke="${col}" stroke-width="1.6" ${dash?'stroke-dasharray="5 4"':''}/>`+txt(x,y,t,{s:12,n:20,w:600});
+ const ln=(x1,y1,x2,y2,col,m,d)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${d?2.2:1.8}" ${d?'stroke-dasharray="7 5"':''} marker-end="url(#${m})"/>`;
+ const lb=(x,y,t,col)=>`<text class="mono" x="${x}" y="${y}" font-size="10" fill="${col}" text-anchor="middle" font-weight="600">${t}</text>`;
+ let o=`<rect x="300" y="14" width="200" height="48" rx="10" fill="${C.p}" stroke="${C.h}" stroke-width="1.6"/>`+txt(400,38,'Residentes y comercios de Kennedy',{s:12.5,n:26,w:700});
+ o+=bx(120,150,'Generan y separan',C.b)+bx(400,150,'Recolectan y transportan',C.b)+bx(680,150,'Clasifican',C.b);
+ o+=bx(680,300,'Compradores de material',C.h)+bx(400,300,'Mesa de coordinación (propuesta)',C.v,true)+bx(120,300,'Entidades públicas · competencia legal',C.c);
+ o+=bx(400,440,'Financiación, infraestructura y servicios',C.h);
+ o+=`<rect x="602" y="400" width="156" height="80" rx="10" fill="${C.p}" stroke="${R}" stroke-width="1.6" stroke-dasharray="5 4"/>`+txt(680,440,'Tensión: influencia informal sobre precio y ruta',{s:11.5,n:22,w:600,f:R});
+ o+=ln(335,62,150,120,'#8d887d','ar')+ln(198,150,320,150,'#8d887d','ar')+ln(478,150,600,150,'#8d887d','ar')+ln(680,178,680,270,'#8d887d','ar');
+ o+=lb(120,92,'residuos aprovechables','#8d887d');
+ o+=ln(630,272,460,180,G,'arg',1)+lb(590,214,'ingresos por material',G);
+ o+=ln(400,272,400,180,G,'arg',1)+lb(400,226,'acuerdos · rutas · horarios',G);
+ o+=ln(198,300,320,300,G,'arg',1)+lb(259,288,'competencias',G);
+ o+=ln(400,412,400,330,G,'arg',1)+lb(400,376,'ejecución',G);
+ o+=ln(680,400,680,330,R,'arr2',1)+lb(718,372,'−',R);
+ o+=`<text class="mono" x="20" y="476" font-size="10" fill="#8d887d">──▶ materiales    ╌╌▶ retroalimentación (dinero, información, mandato)    ╌╌▶ tensión</text>`;
+ o+=`<text class="mono" x="20" y="494" font-size="10" fill="#8d887d">BORRADOR · cantidades por validar</text>`;
  return svg(o)}});
 
 SL.push({part:'Contradicciones',time:'10:45–12:15',title:'Contradicciones y límites',
