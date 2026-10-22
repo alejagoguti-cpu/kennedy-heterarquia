@@ -65,7 +65,7 @@ L.push([
  const head=cap(-70,60,'Ejemplo · recuperación de residuos aprovechables',C.h)+txt(-70,88,'Un reciclador, una asociación, un comercio o un operador identifica la dificultad',{s:12.5,anchor:'start',f:'#c6c1b6',n:120});
  L.push([
  {label:'Agenda',svg:()=>head+one(0)},{label:'Deliberación',svg:()=>one(1)},{label:'Resolución',svg:()=>one(2)},{label:'Ejecución',svg:()=>one(3)},
- {label:'Rectificación',svg:()=>one(4)+`<path d="M765 386 Q765 440 400 440 Q30 440 13 386" fill="none" stroke="${C.v}" stroke-dasharray="5 5" marker-end="url(#ar)"/>`+txt(400,466,'Separar decidir de ejecutar: quien firma no siempre controla dinero, equipos, calendario o conocimiento',{s:12.5,f:C.m,n:100})}
+ {label:'Rectificación',svg:()=>one(4)+`<path d="M765 386 Q765 424 400 424 Q30 424 13 386" fill="none" stroke="${C.v}" stroke-dasharray="5 5" marker-end="url(#ar)"/>`+txt(400,452,'Separar decidir de ejecutar: quien firma no siempre controla dinero, equipos, calendario o conocimiento',{s:12.5,f:C.m,n:100})}
  ]);}
 
 /* VI */
@@ -89,7 +89,7 @@ L.push([
 {const F=[['Diagnóstico','Reconstruir cómo funciona hoy: conexiones, dependencias, recursos, actores afectados y vacíos de participación.',C.a],['Ensayo','Coordinación entre organizaciones interesadas, ajustada a las competencias legales de las instituciones.',C.b],['Revisión','Medir, comparar y ajustar las reglas con lo aprendido.',C.h]];
  const f=n=>{const x=-60+n*282,s=F[n];return `<rect x="${x}" y="50" width="262" height="210" rx="12" fill="${C.p}" stroke="${s[2]}" stroke-width="1.6"/>`+`<text class="mono" x="${x+18}" y="82" font-size="11" fill="${s[2]}" font-weight="700">FASE ${n+1}</text>`+txt(x+18,112,s[0],{s:21,w:700,anchor:'start'})+txt(x+18,180,s[1],{s:13,anchor:'start',n:32,f:'#c6c1b6',w:400,lh:1.4})+(n?ln(x-18,155,x-2,155,s[2],'ar'):'')};
  L.push([{label:'Diagnóstico',svg:()=>f(0)+txt(400,296,'Dinámica delimitada: la recuperación de residuos aprovechables',{s:12.5,f:C.m,n:80})},{label:'Ensayo',svg:()=>f(1)},{label:'Revisión',svg:()=>f(2)+`<path d="M780 272 Q780 320 400 320 Q20 320 70 272" fill="none" stroke="${C.m}" stroke-dasharray="5 5" marker-end="url(#ar)"/>`+txt(400,342,'aprendizaje y ajuste de reglas',{s:12,f:C.m,n:50})},
- {label:'Primera prueba',svg:()=>cap(-60,384,'Primera prueba · qué registrar',C.h)+['Acuerdos cumplidos','Tiempo para resolver dificultades','Distribución de tareas','Participación efectiva'].map((k,n)=>box(-60+n*211,400,196,56,k,C.h,{s:13})).join('')+txt(400,486,'No prueban por sí solos que una estructura sea mejor: ayudan a detectar exclusiones y responsabilidades desiguales.',{s:12,f:C.m,n:120})}]);}
+ {label:'Primera prueba',svg:()=>cap(-60,384,'Primera prueba · qué registrar',C.h)+['Acuerdos cumplidos','Tiempo para resolver dificultades','Distribución de tareas','Participación efectiva'].map((k,n)=>box(-60+n*211,400,196,56,k,C.h,{s:13})).join('')+txt(400,474,'No prueban por sí solos que una estructura sea mejor: ayudan a detectar exclusiones y responsabilidades desiguales.',{s:12,f:C.m,n:120})}]);}
 
 /* IX */
 {const P=[['Ficha del macromodelo','Principios y objetivos',C.h],['Red de actores','Influencias y relaciones',C.c],['Trayecto de decisiones','Agenda → rectificación',C.b],['Modelo dinámico-causal','Flujos y retroalimentación',C.a],['Efectos territoriales','Síntesis',C.v],['Fuentes y supuestos','Qué sabemos y qué falta',C.m]];
