@@ -15,7 +15,7 @@ function render(){
   const parts=[];
   for(let m=0;m<=k;m++){const L=s.layers[m];parts.push(`<g class="${m===k?'L':''}">${L.svg?L.svg():''}</g>`)}
   const card=s.layers[k].card?`<div class="card"><b>${s.layers[k].label}</b>${s.layers[k].card}</div>`:'';
-  $('stage').innerHTML=(s.base?s.base:`<svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"><defs>
+  $('stage').innerHTML=(s.base?s.base:`<svg viewBox="0 -70 1000 640" preserveAspectRatio="xMidYMid meet"><defs>
 <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8d887d"/></marker>
 <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4fb38f"/></marker>
 <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0603f"/></marker></defs>
