@@ -65,6 +65,8 @@ function tm(){const b=$('timer');
   if(tid){clearInterval(tid);tid=null;acc+=Date.now()-t0;b.classList.remove('run');return}
   t0=Date.now();b.classList.add('run');tick();tid=setInterval(tick,500)}
 $('timer').onclick=tm;$('timer').ondblclick=()=>{if(tid)tm();acc=0;$('bar').style.width='0';$('timer').textContent=$('timer').dataset.r};
+function fromHash(){const h=(location.hash.slice(1)||'1').split('.');go((parseInt(h[0])||1)-1,(parseInt(h[1])||1)-1)}
+addEventListener('hashchange',()=>{const h=(location.hash.slice(1)||'1').split('.');const n=(parseInt(h[0])||1)-1,m=(parseInt(h[1])||1)-1;if(n!==i||m!==k)go(n,m)});
 const h=(location.hash.slice(1)||'1').split('.');
 go((parseInt(h[0])||1)-1,(parseInt(h[1])||1)-1);
 })();

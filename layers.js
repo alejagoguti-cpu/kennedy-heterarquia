@@ -19,7 +19,7 @@ const L=[];
  const P=ks.map((k,n)=>{const a=-Math.PI/2+n*2*Math.PI/5;return[400+185*Math.cos(a)*1.25,250+185*Math.sin(a),k]});
  L.push([
  {label:'Los actores',svg:()=>`<ellipse cx="400" cy="250" rx="231" ry="185" fill="none" stroke="${C.l}" stroke-dasharray="3 6"/>`+dot(400,250,52,'Kennedy',C.h,{s:16})+P.map(p=>dot(p[0],p[1],46,p[2][0],p[2][1],{n:13,s:11.5})).join('')},
- {label:'Las relaciones',svg:()=>P.map((p,n)=>{const q=P[(n+2)%5];return `<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="#4a4840" stroke-width="1.6"/>`}).join('')+P.map(p=>`<line x1="400" y1="250" x2="${p[0]}" y2="${p[1]}" stroke="#3a3830"/>`).join('')+dot(400,250,52,'Kennedy',C.h,{s:16})+P.map(p=>dot(p[0],p[1],46,p[2][0],p[2][1],{n:13,s:11.5})).join('')},
+ {label:'Las relaciones',svg:()=>{const sh=(a,b,ra,rb)=>{const dx=b[0]-a[0],dy=b[1]-a[1],d=Math.hypot(dx,dy);return `<line x1="${a[0]+dx/d*ra}" y1="${a[1]+dy/d*ra}" x2="${b[0]-dx/d*rb}" y2="${b[1]-dy/d*rb}" stroke="#5d5a52" stroke-width="1.6"/>`};return P.map((p,n)=>sh(p,P[(n+2)%5],46,46)).join('')+P.map(p=>sh([400,250],p,52,46)).join('')}},
  {label:'Las cinco preguntas',svg:()=>cap(-80,34,'Lo que queremos saber',C.h)+['¿Quién participa?','¿Qué recursos controla?','¿Quién tiene información?','¿Quién puede cambiar una decisión?','¿Quién asume las consecuencias?'].map((q,n)=>`<text x="-80" y="${64+n*24}" font-size="13" fill="#d9d4ca">${n+1}. ${q}</text>`).join('')}
  ]);}
 
